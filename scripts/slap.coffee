@@ -7,7 +7,7 @@
 # Author:
 #   jellysnake (http://github.com/jellysnake)
 
-robot.brain.set 'hubot-slap', JSON.stringify(["slaps #{user} one", "slaps #{user} two"])
+
 
 getSlap = (robot, number) -> 
   number = number or -1
@@ -26,6 +26,7 @@ addSlap = (robot, slap) ->
 	
 	
 module.exports = (robot) ->
+  robot.brain.set 'hubot-slap', JSON.stringify(["slaps #{user} one", "slaps #{user} two"])
   robot.hear /\.slap (.*) (.*)/i, (msg) ->
     user = msg.match[1]
     msg.emote getSlap robot, msg.match[2] 
